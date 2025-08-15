@@ -8,7 +8,6 @@ const siteTitle = "هوشینو — اولین پایگاه خبری مبتنی 
     <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
     <title>{siteTitle}</title>
     <meta name="description" content="{siteTitle} | گردآوری، ترجمه و دسته‌بندی خودکار خبرها از منابع معتبر خارجی.">
-    <!-- IMPORTANT: external stylesheet with relative path for GitHub Pages -->
     <link rel="stylesheet" href="styles.css" />
   </head>
   <body>
@@ -33,7 +32,7 @@ const siteTitle = "هوشینو — اولین پایگاه خبری مبتنی 
             <button class="chip" data-cat="business">اقتصاد</button>
             <button class="chip" data-cat="science">علم</button>
             <button class="chip" data-cat="tech">تکنولوژی</button>
-            <button class="chip" id="btn-refresh">رفرش</button>
+            <button class="chip" id="btn-refresh">بروزرسانی</button>
           </div>
           <input class="search" id="search" placeholder="جستجو در عنوان/خلاصه...">
         </div>
@@ -104,7 +103,7 @@ const siteTitle = "هوشینو — اولین پایگاه خبری مبتنی 
 
       function openModal(item){
         $mTitle.textContent = item.titleFa || item.title;
-        $mSource.textContent = 'منبع: ' + item.source;
+        $mSource.textContent = 'منبع: ' + (item.source||'منبع');
         $mTime.textContent = timeAgo(item.publishedAt);
         $mCat.textContent = 'دسته: ' + (item.category || 'عمومی');
         $mSummary.textContent = item.summaryFa || item.summary || '—';
@@ -126,12 +125,12 @@ const siteTitle = "هوشینو — اولین پایگاه خبری مبتنی 
 
         $grid.innerHTML = list.map(i => `
           <article class="card" data-id="${i.id}" data-url="${i.url}">
-            <div class="thumb"></div>
+            <div class="thumb">${i.imageUrl ? `<img src="${i.imageUrl}" alt="" style="width:100%;height:100%;object-fit:cover;">` : ''}</div>
             <div class="content">
               <div class="meta">
                 <span class="badge">${i.category||'general'}</span>
                 <span>${timeAgo(i.publishedAt)}</span>
-                <span>• ${i.source}</span>
+                <span>• ${(i.source||'')}</span>
               </div>
               <h3>${i.titleFa || i.title}</h3>
               <div class="summary">${i.summaryFa || i.summary || ''}</div>
