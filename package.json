@@ -1,0 +1,19 @@
+{
+  "name": "hoshino-site",
+  "private": true,
+  "type": "module",
+  "version": "1.0.0",
+  "scripts": {
+    "dev": "astro dev",
+    "build": "node scripts/fetch-feeds.mjs && astro build",
+    "preview": "astro preview",
+    "fetch": "node scripts/fetch-feeds.mjs"
+  },
+  "dependencies": {
+    "astro": "^4.10.0",
+    "rss-parser": "^3.13.0",
+    "cheerio": "^1.0.0",
+    "franc-min": "^6.2.0",
+    "html-to-text": "^9.0.5"
+  }
+}
