@@ -13,8 +13,8 @@ jobs:
       - uses: actions/setup-node@v4
         with:
           node-version: '20'
-          cache: 'npm'
-      - run: npm ci
+          # ⚠️ کش npm را حذف کردیم چون lockfile نداری
+      - run: npm install           # ← به‌جای npm ci (که lockfile می‌خواهد)
       - run: npm run fetch
         env:
           TRANSLATE_PROVIDER: ${{ secrets.TRANSLATE_PROVIDER }}
