@@ -1,70 +1,15 @@
 ---
 const siteTitle = "هوشینو — اولین پایگاه خبری مبتنی بر هوش مصنوعی";
 ---
+<!DOCTYPE html>
 <html lang="fa" dir="rtl">
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
     <title>{siteTitle}</title>
     <meta name="description" content="{siteTitle} | گردآوری، ترجمه و دسته‌بندی خودکار خبرها از منابع معتبر خارجی.">
-    <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🧠</text></svg>">
-    <style is:global>
-      :root{
-        --bg:#fafbff; --fg:#0e0f12; --mut:#6b7280;
-        --card:#ffffff; --chip:#eef1f7; --border:#e5e7ef;
-        --brand:#2563eb; --brand-weak:#e6efff; --shadow:0 10px 30px rgba(16,20,40,.08);
-        --radius:16px;
-      }
-      *{box-sizing:border-box}
-      html,body{margin:0;padding:0}
-      body{font-family:system-ui,-apple-system,Segoe UI,Roboto,Ubuntu,'Noto Sans',Tahoma,Arial;background:var(--bg);color:var(--fg);overflow-x:hidden;}
-      a{color:inherit}
-      .container{max-width:1100px;margin:0 auto;padding:12px}
-      @media(min-width:640px){ .container{padding:16px} }
-      header{position:sticky;top:0;backdrop-filter:blur(10px) saturate(120%);background:rgba(255,255,255,.92); border-bottom:1px solid var(--border); z-index:20;}
-      .top{display:flex;gap:12px;flex-wrap:wrap;align-items:center;justify-content:space-between;padding:10px 0}
-      .brand{display:flex;align-items:flex-start;gap:10px;min-width:0}
-      .logo{font-size:24px;line-height:1}
-      h1{margin:0;font-size:18px;line-height:1.35;word-break:break-word}
-      .sub{margin:4px 0 0;color:var(--mut);font-size:12px}
-      .actions{display:flex;gap:8px;align-items:center}
-      .live{display:inline-flex;align-items:center;gap:6px;background:#ffe8e8;color:#8a1a1a;padding:8px 12px;border-radius:999px;font-size:13px}
-      .dot{width:8px;height:8px;background:#ef4444;border-radius:50%;position:relative;box-shadow:0 0 0 0 rgba(239,68,68,.6);animation:pulse 1.8s infinite}
-      @keyframes pulse{0%{box-shadow:0 0 0 0 rgba(239,68,68,.6)}70%{box-shadow:0 0 0 12px rgba(239,68,68,0)}100%{box-shadow:0 0 0 0 rgba(239,68,68,0)}}
-      .row{display:flex;gap:10px;flex-wrap:wrap;align-items:center;justify-content:space-between;padding:8px 0 12px}
-      .filters{display:flex;gap:8px;overflow:auto;padding-bottom:4px;-webkit-overflow-scrolling:touch}
-      .chip{background:var(--chip); padding:10px 14px; border-radius:999px; font-size:14px; border:1px solid var(--border); white-space:nowrap; flex:0 0 auto; cursor:pointer}
-      .chip.active{background:#1f4fff;color:#fff;border-color:#1f4fff}
-      .search{flex:1;min-width:0;width:100%;background:#fff;border:1px solid var(--border);color:var(--fg); padding:12px;border-radius:12px}
-      .ticker-wrap{position:relative;background:#fff;border-top:1px solid var(--border);border-bottom:1px solid var(--border);overflow:hidden}
-      .ticker{display:flex;align-items:center;white-space:nowrap;overflow:hidden}
-      .ticker-label{display:inline-flex;align-items:center;gap:6px;background:#ffe8e8;color:#8a1a1a;border-radius:999px;padding:6px 10px;margin-inline:8px;font-size:12px;flex:0 0 auto}
-      .ticker-track{display:inline-flex;gap:28px;padding:10px 12px;min-width:100%;will-change:transform}
-      .marqA{animation:marq 26s linear infinite}
-      .marqB{animation:marq 26s linear infinite; animation-delay:13s}
-      @keyframes marq{from{transform:translateX(0)}to{transform:translateX(-100%)}}
-      .tick a{color:#0b3ddb;text-decoration:none;border-bottom:1px dashed #bcd;padding-bottom:1px;font-size:13px}
-      .grid{display:grid; grid-template-columns:1fr; gap:12px; margin-top:12px}
-      @media(min-width:640px){.grid{grid-template-columns:repeat(2,minmax(0,1fr))}}
-      @media(min-width:1024px){.grid{grid-template-columns:repeat(3,minmax(0,1fr))}}
-      .card{background:var(--card); border:1px solid var(--border); border-radius:16px; overflow:hidden; box-shadow:var(--shadow);}
-      .thumb{aspect-ratio:16/9; width:100%; background:linear-gradient(135deg,#eaf1ff,#f6f8ff);}
-      .content{padding:14px}
-      .meta{display:flex;gap:8px;align-items:center;margin-bottom:8px;color:var(--mut);font-size:12px;flex-wrap:wrap}
-      .badge{background:#eef2ff;border:1px solid #dbe3ff; padding:4px 8px; border-radius:999px; font-size:12px;color:#29347a}
-      .summary{color:#2b2b35;font-size:14px;line-height:1.7}
-      .link{display:inline-flex;align-items:center;gap:6px;margin-top:10px;font-size:13px;color:#0b3ddb;text-decoration:none}
-      .empty{color:#mut;font-size:13px;text-align:center;padding:30px 0}
-      .modal{position:fixed;inset:0;background:rgba(8,12,24,.45);display:none;align-items:flex-end;justify-content:center;z-index:50}
-      @media(min-width:640px){.modal{align-items:center}}
-      .sheet{width:100%;max-width:720px;background:#fff;border-radius:16px 16px 0 0;box-shadow:var(--shadow);overflow:hidden}
-      @media(min-width:640px){.sheet{border-radius:16px}}
-      .sheet-head{display:flex;align-items:center;justify-content:space-between;padding:12px 16px;border-bottom:1px solid var(--border)}
-      .sheet-body{padding:16px}
-      .sheet-title{font-size:16px;margin:0 0 4px 0}
-      .sheet-meta{color:#6b7280;font-size:12px;margin-bottom:12px;display:flex;gap:10px;flex-wrap:wrap}
-      .close{background:#f3f4f6;border:1px solid #e5e7ef;border-radius:10px;padding:8px 12px;cursor:pointer}
-    </style>
+    <!-- IMPORTANT: external stylesheet with relative path for GitHub Pages -->
+    <link rel="stylesheet" href="styles.css" />
   </head>
   <body>
     <header>
@@ -85,7 +30,7 @@ const siteTitle = "هوشینو — اولین پایگاه خبری مبتنی 
           <div class="filters" id="filters">
             <button class="chip active" data-cat="all">همه</button>
             <button class="chip" data-cat="world">جهان</button>
-            <button class="chip" data-cat="business">Economy</button>
+            <button class="chip" data-cat="business">اقتصاد</button>
             <button class="chip" data-cat="science">علم</button>
             <button class="chip" data-cat="tech">تکنولوژی</button>
             <button class="chip" id="btn-refresh">رفرش</button>
